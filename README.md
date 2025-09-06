@@ -63,13 +63,10 @@ Steps include:
 
 ### 2. Model Architecture
 
-```{=html}
 <p align="center">
-```
-`<img src="images/Model_architecture.png" width="700"/>`{=html}
-```{=html}
-</p>
-```
+  <img src="./images/Model_architecture.png" width="700"/>
+</p>  
+
 *Modified HoVer-Net with ConvNeXtV2 backbone.*
 
 -   **Encoder**: ConvNeXtV2 (better feature extraction than ResNet-50)
