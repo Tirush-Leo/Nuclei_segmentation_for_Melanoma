@@ -44,13 +44,7 @@ We used the **PUMA dataset** of melanoma histopathology slides:
 
 ### 1. Preprocessing
 
-```{=html}
-<p align="center">
-```
-`<img src="/images/pre_process.png" width="700"/>`{=html}
-```{=html}
-</p>
-```
+![Preprocessing](./images/pre_process.png)
 *Resized Image → Optimized Normalized Image → HSV Foreground Mask.*
 
 Steps include:
@@ -63,9 +57,7 @@ Steps include:
 
 ### 2. Model Architecture
 
-<p align="center">
-  <img src="./images/Model_architecture.png" width="700"/>
-</p>  
+![Model_Architecture](./images/Model_architecture.png)
 
 *Modified HoVer-Net with ConvNeXtV2 backbone.*
 
@@ -92,10 +84,36 @@ Steps include:
 
 ### 4. Evaluation
 
-Metrics used:
-- **F1-score** per class + micro average
-- **Dice coefficient**
-- **IoU** (Intersection over Union)
+We assessed the performance using **F1-score, Dice Coefficient, and
+Intersection-over-Union (IoU)**.
+
+-   **F1-Score** (per class):
+
+``` math
+F1 = \frac{2 \times Precision \times Recall}{Precision + Recall}
+```
+
+where
+
+``` math
+Precision = \frac{TP}{TP + FP}, \quad Recall = \frac{TP}{TP + FN}
+```
+
+-   **Dice Coefficient**:
+
+``` math
+Dice = \frac{2 \times |Prediction \cap GroundTruth|}{|Prediction| + |GroundTruth|}
+```
+
+-   **Intersection over Union (IoU)**:
+
+``` math
+IoU = \frac{|Prediction \cap GroundTruth|}{|Prediction \cup GroundTruth|}
+```
+
+These metrics provide a comprehensive evaluation of both **segmentation
+quality** (Dice, IoU) and **classification accuracy** (F1-score).
+
 
 ------------------------------------------------------------------------
 
@@ -114,34 +132,37 @@ Metrics used:
 
 ### Qualitative Results
 
-```{=html}
-<p align="center">
-```
-`<img src="Images/Results.png" width="700"/>`{=html}
-```{=html}
-</p>
-```
+![Results](./images/Results.png)
+
 *Example segmentation results: Original WSIs → Ground Truth →
 Predictions.*
 
--   Clear separation of overlapping nuclei\
--   Accurate detection of tumor and lymphocytes\
+-   Clear separation of overlapping nuclei
+-   Accurate detection of tumor and lymphocytes
 -   Some misclassifications remain in "Other nuclei"
 
 ------------------------------------------------------------------------
 
 ## ⚡ Limitations
 
--   Performance still affected by **staining variability**\
+-   Performance still affected by **staining variability**
 -   Classification of **"Other nuclei"** less reliable than
-    tumor/lymphocyte\
+    tumor/lymphocyte
 -   Model has **high computational cost**, limiting real-time deployment
 
 ------------------------------------------------------------------------
 
 ## 🔮 Future Work
 
--   **Domain adaptation** across different labs/institutions\
--   **Self-supervised learning** to reduce annotation dependency\
--   **Model optimization** (pruning/quantization for real-time use)\
+-   **Domain adaptation** across different labs/institutions
+-   **Self-supervised learning** to reduce annotation dependency
+-   **Model optimization** (pruning/quantization for real-time use)
 -   Integration into **clinical pathology workflows**
+  
+-----------------------------------------------------------------------
+
+## 📌 Note  
+The final trained model and complete model development code are **not included** in this repository at this stage.  
+Currently, I am in the process of **publishing this work as a research paper**.  
+
+Once the paper is successfully published, I will update this repository to make the **final model and implementation code publicly available**.  
